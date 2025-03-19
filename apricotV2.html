@@ -145,9 +145,14 @@
         <label for="incident">Incident Description:</label>
         <textarea id="incident" name="incident" rows="5" required></textarea>
 
-        <label for="public">Make this report public:</label>
-        <input type="checkbox" id="public" name="public">
-
+        <p>Make this report public:  
+        <span><button id="yes" class="buttoncont" onclick="public()">Yes</button> <button id="no" class="buttoncont" onclick="notpublic()">No</button></span>
+</p>
+<script>
+    function public() {
+        confirm("are you sure you want to make this report public")
+    }
+</script>
         <button type="submit">Submit Report</button>
       </form>
     </section>
