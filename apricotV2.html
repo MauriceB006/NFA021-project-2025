@@ -296,13 +296,21 @@
 
   <script>
     // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+// the change done here is so the script can figure out an internal href from another file href 
+// the older version didn't let the reviewus button work properly
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+
+        // Check if the link is an internal link (starts with #)
+        if (targetId.startsWith('#')) {
+            e.preventDefault(); // Prevent default behavior only for internal links
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        // External links (like reviewus.html) will work as normal
     });
 
 
