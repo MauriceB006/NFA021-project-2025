@@ -397,3 +397,29 @@
   #no{
     display: inline-block ;
   }
+
+
+.reviewus-button {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.reviewus-link {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-decoration: none; /* Remove underline from the link */
+  display: inline-block; /* Make the link behave like a button */
+}
+
+.reviewus-link:hover {
+  background-color: #0056b3;
+}
+
