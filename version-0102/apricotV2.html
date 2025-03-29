@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACTC Transport Publique</title>
+  <link rel="stylesheet" href="apricotCSS-V2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>ACTC Transport Publique</h1>
+      <p>Your Reliable Public Transport in Lebanon</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#bus-updates"><i class="fas fa-bus"></i> Bus Line Updates</a></li>
+        <li><a href="#route-management"><i class="fas fa-route"></i> Routes & Stops</a></li>
+        <li><a href="#fare-management"><i class="fas fa-money-bill-wave"></i> Fares</a></li>
+        <li><a href="#map"><i class="fas fa-map-marked-alt"></i> Map</a></li>
+        <li><a href="#reporting"><i class="fas fa-exclamation-circle"></i> Passenger Reporting</a></li>
+       
+        <!-- we need to have these removed going forward and put them in the footer
+         <li><a href="#contact-us"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        <li><a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a></li>
+         -->
+
+    <div class="reviewus-button">
+          <a href="reviewus.html" class="reviewus-link">Share Your Opinion</a>
+        </div>
+        
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Search Bar -->
+    <section id="search" class="section">
+      <h2><i class="fas fa-search"></i> Search</h2>
+      <form class="search-form">
+        <input type="text" id="search-input" placeholder="Search by bus number, stop name, or area..." required>
+        <button type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      <div id="search-results" class="search-results"></div>
+    </section>
+
+    <!-- Bus Line Updates Section -->
+    <section id="bus-updates" class="section">
+      <h2><i class="fas fa-bus"></i> Bus Line Updates</h2>
+      <p class="section-description">Stay informed about delays, cancellations, or schedule changes.</p>
+      <div class="updates">
+        <p><strong class="alert">Alert:</strong> Line B1 is delayed due to traffic.</p>
+        <p><strong class="notice">Notice:</strong> Line ML3 will not operate on Sunday.</p>
+      
+      </div>
+    </section>
+
+    <!-- Drivers Section -->
+
+    <!--    
+    <section id="driver-management" class="section">
+      <h2><i class="fas fa-users"></i> Drivers</h2>
+      <p class="section-description">Add, update, or remove drivers and manage their contact information.</p>
+      <div class="driver-list">
+        <p>
+          <strong>Driver:</strong> Antoine Ezzedine
+          <a href="https://wa.me/96170123456" target="_blank" class="contact-link">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </p>
+        <p>
+          <strong>Driver:</strong> Charbel Khoury
+          <a href="https://wa.me/96171654321" target="_blank" class="contact-link">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    -->
+ 
+
+    <!-- Routes & Stops Section -->
+    <section id="route-management" class="section">
+      <h2><i class="fas fa-route"></i> Routes & Stops</h2>
+      <p class="section-description">Latest bus routes and stops.</p>
+      <div class="route-list">
+        <h3>Line B1</h3>
+        <p>City Mall → Ain El Mraiseh → Raouche → Mazraa → Cola → Adlieh → Corniche El Nahr → Dora</p>
+        <h3>Line ML3</h3>
+        <p>City Mall → Bourj Hammond → Saloumi → Chevrolet → Al Hadath → Antounieh → Saraya Baabda → Galerie Semant → Dora</p>
+        <h3>Line B3</h3>
+        <p>Mar Mikhael → Sagesse → Borj al Ghazal → BDL → LAU Lower Gate → Makdissi St → AUB Upper Gate → Sanayeh → Gemmayze → EDL</p>
+        <h3>Line B2</h3>
+        <p>Dora → Corniche El Nahr → Adlieh → Cola → Mazraa → Raouche → Ain El Mraiseh → City Mall</p>
+      </div>
+    </section>
+
+    <!-- Fares Section -->
+    <section id="fare-management" class="section">
+      <h2><i class="fas fa-money-bill-wave"></i> Fares</h2>
+      <p class="section-description">Updated fares for all routes.</p>
+      <div class="fare-list">
+        <p><strong>Line B1:</strong> 200,000 LBP</p>
+        <p><strong>Line ML3:</strong> 250,00 LBP</p>
+        <p><strong>Line B3:</strong> 180,000 LBP</p>
+        <p><strong>Line B2:</strong> 200,000 LBP</p>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="section">
+      <h2><i class="fas fa-map-marked-alt"></i> Map</h2>
+      <p class="section-description"></p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.698312259245!2d35.495315315214!3d33.902234980642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f17215880a78f%3A0x729182bae99836b4!2sBeirut%2C%20Lebanon!5e0!3m2!1sen!2sus!4v1633021234567!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <div class="map-buttons">
+          <button onclick="showLine('B1')">Show Line B1</button>
+          <button onclick="showLine('ML3')">Show Line ML3</button>
+          <button onclick="showLine('B3')">Show Line B3</button>
+          <button onclick="showLine('B2')">Show Line B2</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Passenger Reporting System Section -->
+    <section id="reporting" class="section">
+      <h2><i class="fas fa-exclamation-circle"></i> Passenger Reporting System</h2>
+      <p class="section-description">Report drivers, incidents, or misconduct (e.g., sexual harassment, rude behavior, or safety concerns).</p>
+      <form class="report-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="contact">Contact Info:</label>
+        <input type="text" id="contact" name="contact" required>
+
+        <label for="line">Line:</label>
+        <select id="line" name="line" required>
+          <option value="B1">Line B1</option>
+          <option value="ML3">Line ML3</option>
+          <option value="B3">Line B3</option>
+          <option value="B2">Line B2</option>
+        </select>
+
+        <label for="date">Date of Incident:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time of Incident:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="incident">Incident Description:</label>
+        <textarea id="incident" name="incident" rows="5" required></textarea>
+
+        <p>Make this report public:  
+        <span><button id="yes" class="buttoncont" onclick="public()">Yes</button> <button id="no" class="buttoncont" onclick="notpublic()">No</button></span>
+</p>
+<script>
+    function public() {
+        confirm("are you sure you want to make this report public")
+    }
+</script>
+        <button type="submit">Submit Report</button>
+      </form>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="section">
+      <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+      <p class="section-description">Get in touch with us for any inquiries or support.</p>
+      <div class="contact-info">
+        <p><strong>Email:</strong> info@actc.com</p>
+        <p><strong>Phone:</strong> +961 71 200 908</p>
+      </div>
+      <form class="contact-form">
+        <label for="contact-name">Your Name:</label>
+        <input type="text" id="contact-name" name="contact-name" required>
+
+        <label for="contact-email">Your Email:</label>
+        <input type="email" id="contact-email" name="contact-email" required>
+
+        <label for="contact-message">Message:</label>
+        <textarea id="contact-message" name="contact-message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="section">
+      <h2><i class="fas fa-info-circle"></i> About Us</h2>
+      <p class="section-description">ACTC Transport Publique is dedicated to providing reliable and efficient public transportation services across Lebanon. Our mission is to ensure safe, timely, and comfortable travel for all passengers.</p>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment" class="section">
+      <h2><i class="fas fa-credit-card"></i> Payment & Bus Card</h2>
+      <p class="section-description">Apply for a bus card </p>
+      <form class="payment-form">
+        <label for="card-name">Full Name:</label>
+        <input type="text" id="card-name" name="card-name" required>
+
+        <label for="card-email">Email:</label>
+        <input type="email" id="card-email" name="card-email" required>
+
+        <label for="card-phone">Phone Number:</label>
+        <input type="tel" id="card-phone" name="card-phone" required>
+
+        <label for="card-address">Address:</label>
+        <input type="text" id="card-address" name="card-address" required>
+
+        <button type="submit">Apply for Bus Card</button>
+      </form>
+    </section>
+    <!--
+    <!-- Reviews Section
+   <!-- Reviews Section 
+<section id="reviews" class="section">
+  <h2><i class="fas fa-star"></i> Reviews & Ratings</h2>
+  <p class="section-description">Share your experience with us.</p>
+  <form class="review-form">
+    <label for="review-line">Select Line:</label>
+    <select id="review-line" name="review-line" required>
+      <option value="B1">Line B1</option>
+      <option value="ML3">Line ML3</option>
+      <option value="B3">Line B3</option>
+      <option value="B2">Line B2</option>
+    </select>
+
+    <label for="review-date">Date of Travel:</label>
+    <input type="date" id="review-date" name="review-date" required>
+
+    <label for="review-time">Time of Travel:</label>
+    <input type="time" id="review-time" name="review-time" required>
+
+    <!-- Star Rating System
+    <div class="star-rating">
+      <label>Rating:</label>
+      <div class="stars">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+      </div>
+      <input type="hidden" id="review-rating" name="review-rating" required>
+    </div>
+
+    <label for="review-comment">Comment:</label>
+    <textarea id="review-comment" name="review-comment" rows="5" required></textarea>
+
+    <button type="submit">Submit Review</button>
+  </form>
+</section>
+
+   -->
+
+    <!-- Lost Items Section -->
+    <section id="lost-items" class="section">
+      <h2><i class="fas fa-search"></i> Lost Items</h2>
+      <p class="section-description">Report lost items on our buses.</p>
+      <form class="lost-item-form">
+        <label for="lost-item-name">Your Name:</label>
+        <input type="text" id="lost-item-name" name="lost-item-name" required>
+
+        <label for="lost-item-contact">Contact Info:</label>
+        <input type="text" id="lost-item-contact" name="lost-item-contact" required>
+
+        <label for="lost-item-line">Line:</label>
+        <select id="lost-item-line" name="lost-item-line" required>
+          <option value="B1">Line B1</option>
+          <option value="ML3">Line ML3</option>
+          <option value="B3">Line B3</option>
+          <option value="B2">Line B2</option>
+        </select>
+
+        <label for="lost-item-date">Date Lost:</label>
+        <input type="date" id="lost-item-date" name="lost-item-date" required>
+
+        <label for="lost-item-description">Item Description:</label>
+        <textarea id="lost-item-description" name="lost-item-description" rows="5" required></textarea>
+
+        <button type="submit">Report Lost Item</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="social-media">
+        <a href="https://www.facebook.com/ACTCTransport" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/ACTCTransport" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com/ACTCTransport" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p><strong>Main Office:</strong> Anfeh Hillside, Beirut-Tripoli Highway</p>
+      <p>&copy; 2025 ACTC Transport Publique. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+// the change done here is so the script can figure out an internal href from another file href 
+// the older version didn't let the reviewus button work properly
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+
+        // Check if the link is an internal link (starts with #)
+        if (targetId.startsWith('#')) {
+            e.preventDefault(); // Prevent default behavior only for internal links
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        // External links (like reviewus.html) will work as normal
+    });
+
+
+
+
+    /*
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const routes = [
+      { line: 'B1', description: 'City Mall → Ain El Mraiseh → Raouche → Mazraa → Cola → Adlieh → Corniche El Nahr → Dora' },
+      { line: 'ML3', description: 'City Mall → Bourj Hammond → Saloumi → Chevrolet → Al Hadath → Antounieh → Saraya Baabda → Galerie Semant → Dora' },
+      { line: 'B3', description: 'Mar Mikhael → Sagesse → Borj al Ghazal → BDL → LAU Lower Gate → Makdissi St → AUB Upper Gate → Sanayeh → Gemmayze → EDL' },
+      { line: 'B2', description: 'Dora → Corniche El Nahr → Adlieh → Cola → Mazraa → Raouche → Ain El Mraiseh → City Mall' }
+    ];
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      searchResults.innerHTML = '';
+      if (query) {
+        const filteredRoutes = routes.filter(route => 
+          route.line.toLowerCase().includes(query) || route.description.toLowerCase().includes(query)
+        );
+        if (filteredRoutes.length > 0) {
+          filteredRoutes.forEach(route => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            resultItem.innerHTML = `<strong>${route.line}</strong>: ${route.description}`;
+            searchResults.appendChild(resultItem);
+          });
+        } else {
+          searchResults.innerHTML = '<div class="search-result-item">No results found.</div>';
+        }
+      }
+    });
+
+    */
+
+
+
+// Sample data for bus routes
+const routes = [
+  { line: 'B1', description: 'City Mall → Ain El Mraiseh → Raouche → Mazraa → Cola → Adlieh → Corniche El Nahr → Dora' },
+  { line: 'ML3', description: 'City Mall → Bourj Hammond → Saloumi → Chevrolet → Al Hadath → Antounieh → Saraya Baabda → Galerie Semant → Dora' },
+  { line: 'B3', description: 'Mar Mikhael → Sagesse → Borj al Ghazal → BDL → LAU Lower Gate → Makdissi St → AUB Upper Gate → Sanayeh → Gemmayze → EDL' },
+  { line: 'B2', description: 'Dora → Corniche El Nahr → Adlieh → Cola → Mazraa → Raouche → Ain El Mraiseh → City Mall' },
+];
+
+// Function to highlight matching text
+function highlightText(text, searchTerm) {
+  if (!searchTerm) return text; // If no search term, return the original text
+  const regex = new RegExp(`(${searchTerm})`, 'gi'); // Create a regex to match the search term
+  return text.replace(regex, '<span class="highlight">$1</span>'); // Wrap matches in a span with the highlight class
+}
+
+// Function to display search results
+function displaySearchResults(searchTerm) {
+  const searchResults = document.getElementById('search-results');
+  searchResults.innerHTML = ''; // Clear previous results
+
+  if (searchTerm) {
+    searchResults.style.display = 'block'; // Show results if there's a search term
+  } else {
+    searchResults.style.display = 'none'; // Hide results if the search term is empty
+    return;
+  }
+
+  routes.forEach(route => {
+    const line = route.line;
+    const description = route.description;
+
+    // Highlight matching text in the line and description
+    const highlightedLine = highlightText(line, searchTerm);
+    const highlightedDescription = highlightText(description, searchTerm);
+
+    // Create a result item
+    const resultItem = document.createElement('div');
+    resultItem.className = 'search-result-item';
+    resultItem.innerHTML = `<strong>${highlightedLine}</strong>: ${highlightedDescription}`;
+    searchResults.appendChild(resultItem);
+  });
+
+  if (searchResults.innerHTML === '') {
+    searchResults.innerHTML = '<div class="search-result-item">No results found.</div>';
+  }
+}
+
+// Event listener for the search input
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', function () {
+  const searchTerm = this.value.trim(); // Get the search term
+  displaySearchResults(searchTerm); // Display results with highlights
+});
+
+
+
+
+    // Map line buttons
+    function showLine(line) {
+      alert(`Showing ${line} on the map.`);
+      // Implement map functionality to highlight the selected line
+    }
+
+    // Star Rating Functionality
+const stars = document.querySelectorAll('.star-rating .star');
+const ratingInput = document.getElementById('review-rating');
+
+stars.forEach(star => {
+    star.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        ratingInput.value = value; // Set the hidden input value
+
+        // Highlight selected stars
+        stars.forEach(s => {
+            if (s.getAttribute('data-value') <= value) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    });
+
+    star.addEventListener('mouseover', function () {
+        const value = this.getAttribute('data-value');
+        stars.forEach(s => {
+            if (s.getAttribute('data-value') <= value) {
+                s.classList.add('hover');
+            } else {
+                s.classList.remove('hover');
+            }
+        });
+    });
+
+    star.addEventListener('mouseout', function () {
+        stars.forEach(s => s.classList.remove('hover'));
+    });
+});
+  </script>
+</body>
+</html>
