@@ -35,14 +35,10 @@ const header = document.querySelector("[data-header]");
 const backTopBtn = document.querySelector("[data-back-top-btn]");
 
 window.addEventListener("scroll", function () {
-  if (window.scrollY >= 100) {
-    header.classList.add("active");
-    backTopBtn.classList.add("active");
-  } else {
-    header.classList.remove("active");
-    backTopBtn.classList.remove("active");
-  }
+  header.classList.add("active"); // Always add the active class
+  backTopBtn.classList.add("active"); // Always show the back-to-top button
 });
+
 const routes1 = {
   B1: ["City Mall", "Ain El Mraiseh", "Raouche", "Mazraa", "Cola", "Adlieh", "Corniche El Nahr", "Dora"],
   ML3: ["City Mall", "Bourj Hammond", "Saloumi", "Chevrolet", "Al Hadath", "Antounieh", "Saraya Baabda", "Dora"],
