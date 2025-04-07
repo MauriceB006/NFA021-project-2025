@@ -1,6 +1,23 @@
+<?php
+$host = 'localhost';
+$db   = 'actc_public_transportation';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
 
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
-
+try {
+     $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +25,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACTC - Public Transport</title>
+  <title></title>
+  <link rel="icon" type="image/png" href="../images/ACTC-LOGO--removebg-preview.png">
   <!--map-->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -47,8 +65,11 @@
     <div class="container">
   
       <h1>
-        <a href="#" class="logo">ACTC-Public Transport</a>
+        <a href="indexV3.html">
+          <img src="../images/ACTC-LOGO.png" class="logo" alt="ACTC Public Transport">
+        </a>
       </h1>
+      
   
       <nav class="navbar" data-navbar>
         <!-- Navigation links -->
@@ -96,7 +117,7 @@
 
 <!-- test test, does it show on the github web version? -->
 
-
+<body>
   <main>
     <article>
 
@@ -104,33 +125,334 @@
         - #HERO
       -->
 
-      <section class="section hero" aria-label="home" id="home"
-        style="background-image: url('../images/inside2.jpg')">
-        <div class="container">
-
-          <div class="hero-content">
-
-            <h2 class="h1 hero-title">
-              <span class="span">Where Every</span> Mile Matters
-            </h2>
-
-            <p class="hero-text">
-              Yalla, hop on Beirut Bus! From souk adventures to Corniche cruises-w ba3dna faster than your cousin’s dabke moves!""
-            </p>
-          
-            <a href="#" class="btn-outline">View Services</a>
-
-            <img src="..\images\hero-shape.png" width="116" height="116" loading="lazy"
-              class="hero-shape shape-1">
-
-            <img src="..\images\hero-shape.png" width="116" height="116" loading="lazy"
-              class="hero-shape shape-2">
-
-          </div>
-
+      <section id="firstpagechanges">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Arial', sans-serif;
+            }
+    
+            body {
+              margin-top: 150px;
+                background-color: #f8f9fa;
+                padding: 20px;
+                color: #333;
+            }
+    
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+    
+            /* Header/Navigation */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+    
+            .logo {
+                font-size: 1.8rem;
+                font-weight: bold;
+                color: #4285f4;
+            }
+    
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+    
+            .nav-links a {
+                text-decoration: none;
+                color: #5f6368;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+    
+            .nav-links a:hover {
+                color: #4285f4;
+            }
+    
+            /* Card Styles */
+            .card {
+                background-color: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                margin-bottom: 25px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            }
+    
+            /* Hero Section */
+            .hero-card {
+                background: linear-gradient(135deg, #4285f4, #34a853);
+                color: white;
+                text-align: center;
+                padding: 50px 30px;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .hero-card::before {
+                content: "";
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 200px;
+                height: 200px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+            }
+    
+            .hero-card h1 {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+                position: relative;
+            }
+    
+            .hero-card p {
+                font-size: 1.2rem;
+                margin-bottom: 25px;
+                opacity: 0.9;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+            }
+    
+            /* Plan and Go Section */
+            .plan-section {
+                display: flex;
+                gap: 20px;
+                margin-bottom: 25px;
+            }
+    
+            .plan-content {
+                flex: 2;
+                border-left: 5px solid #fbbc05;
+                min-height: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+    
+            .plan-content h2 {
+                color: #202124;
+                margin-bottom: 15px;
+                font-size: 1.8rem;
+            }
+    
+            .plan-content p {
+                color: #5f6368;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+    
+            .features {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin: 20px 0;
+            }
+    
+            .feature {
+                background: #f1f3f4;
+                padding: 10px 15px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+    
+            .feature::before {
+                content: "✓";
+                color: #34a853;
+                font-weight: bold;
+            }
+    
+            .plan-image {
+                flex: 1;
+                border-radius: 12px;
+                overflow: hidden;
+                position: relative;
+            }
+    
+            .plan-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+    
+            .plan-image:hover img {
+                transform: scale(1.05);
+            }
+    
+            /* CTA Button */
+            .cta-button {
+                display: inline-block;
+                background-color: #4285f4;
+                color: white;
+                padding: 12px 25px;
+                border-radius: 25px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.3s;
+                border: none;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+    
+            .cta-button:hover {
+                background-color: #3367d6;
+                transform: translateY(-2px);
+            }
+    
+            .cta-button.secondary {
+                background-color: #f1f3f4;
+                color: #5f6368;
+            }
+    
+            .cta-button.secondary:hover {
+                background-color: #e0e0e0;
+            }
+    
+            /* Divider */
+            .divider {
+                height: 1px;
+                background-color: #e0e0e0;
+                margin: 30px 0;
+                opacity: 0.5;
+            }
+    
+            /* Opinion Section */
+            .opinion-card {
+                text-align: center;
+                background-color: #f1f3f4;
+                padding: 40px 30px;
+            }
+    
+            .opinion-card h2 {
+                color: #202124;
+                margin-bottom: 20px;
+                font-size: 1.8rem;
+            }
+    
+            .rating {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin: 20px 0;
+            }
+    
+            .star {
+                color: #fbbc05;
+                font-size: 1.5rem;
+            }
+    
+            /* Footer */
+            .footer {
+                text-align: center;
+                padding: 20px;
+                color: #5f6368;
+                font-size: 0.9rem;
+            }
+    
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .header {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+    
+                .nav-links {
+                    width: 100%;
+                    justify-content: space-around;
+                }
+    
+                .hero-card h1 {
+                    font-size: 2rem;
+                }
+                
+                .hero-card p {
+                    font-size: 1rem;
+                }
+                
+                .card {
+                    padding: 20px;
+                }
+    
+                .plan-section {
+                    flex-direction: column;
+                }
+    
+                .plan-image {
+                    order: -1;
+                    height: 250px;
+                }
+    
+                .plan-content {
+                    min-height: auto;
+                }
+    
+                .features {
+                    justify-content: center;
+                }
+            }
+        </style>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="card hero-card">
+            <h1>Your next ride is just a tap away!</h1>
+            <p>Book fast, travel easy and save more with Lebanon's premier public transportation system</p>
+            <a href="#" class="cta-button">Download App</a>
         </div>
-      </section>
 
+        <!-- Plan and Go Section with Image -->
+        <div class="plan-section">
+            <div class="card plan-content">
+                <div>
+                    <h2>Plan and Go</h2>
+                    <p>Discover the convenience of Lebanon Public Transport. Our integrated network connects all corners of the city with comfort and efficiency.</p>
+                    
+                    <div class="features">
+                        <div class="feature">Real-time tracking</div>
+                        <div class="feature">Mobile tickets</div>
+                        <div class="feature">Accessible routes</div>
+                        <div class="feature">24/7 support</div>
+                    </div>
+
+                    <p>Download our app to get live updates, journey planning, and seamless ticket purchasing all in one place.</p>
+                </div>
+                <div>
+                    <a href="#" class="cta-button">Discover More</a>
+                    <a href="#" class="cta-button secondary">View Routes</a>
+                </div>
+            </div>
+            <div class="card plan-image">
+                <img src="../images/bus1.jpg" alt="Public transport">
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+
+    </section>
+     
 
 
 
@@ -157,7 +479,7 @@
 
             <p class="section-subtitle">Why Choose Us ?</p>
 
-            <h2 class="h2 section-title">We Are Professional Logistics.</h2>
+            <h2 class="h2 section-title">On time, Stress-free, Safe Comfortable.</h2>
 
             <p class="section-text">
               we are dedicated to providing an essential and efficient public transportation service that reflects the dynamic spirit of Beirut
@@ -250,7 +572,7 @@
 
 
       <!-- 
-        - #FEATURE
+        - #FEATURE   TESTTEST
       -->
       <section class="section feature" aria-label="feature" style="background-color: rgb(243, 248, 253);" >
         <div class="container">
