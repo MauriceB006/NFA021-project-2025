@@ -1,37 +1,52 @@
 <?php
-// Debug first
-echo "<pre>POST Data: ";
-print_r($_POST);
-echo "</pre>";
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Debugging: Log POST data
+file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
 
 // Database connection
 $conn = new mysqli('localhost', 'root', '', 'project');
-if ($conn->connect_error) die("Connection failed: ".$conn->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// Get form data
-$name = $_POST['user_name'];
-$contact = $_POST['contact_info'];
-$line = $_POST['route_line']; // Will be "1", "2", or "3"
-$date = $_POST['lost_date'];
-$description = $_POST['item_description'];
+// Validate and sanitize input
+$name = $conn->real_escape_string($_POST['user_name'] ?? '');
+$contact = $conn->real_escape_string($_POST['contact_info'] ?? '');
+$line_id = (int)($_POST['route_line'] ?? 0);
+$date = $conn->real_escape_string($_POST['lost_date'] ?? '');
+$description = $conn->real_escape_string($_POST['item_description'] ?? '');
 
-// Convert to integer
-$line_id = (int)$line;
+// Validate required fields
+if (empty($name) || empty($contact) || empty($date) || empty($description) || $line_id === 0) {
+    $_SESSION['error'] = "All fields are required!";
+    header("Location: lost_items_form.html"); // Redirect back to form
+    exit();
+}
 
 // Insert into database
 $stmt = $conn->prepare("INSERT INTO lostitems 
     (user_name, line_id, item_description, lost_date, contact_info) 
     VALUES (?, ?, ?, ?, ?)");
 
-// Bind parameters - note "i" for integer
+if (!$stmt) {
+    die("Prepare failed: " . $conn->error);
+}
+
 $stmt->bind_param("sisss", $name, $line_id, $description, $date, $contact);
 
 if ($stmt->execute()) {
-    echo "Success! Inserted ID: ".$stmt->insert_id;
+    $_SESSION['success'] = "Item reported successfully!";
 } else {
-    echo "Error: ".$stmt->error;
+    $_SESSION['error'] = "Error: " . $stmt->error;
 }
 
 $stmt->close();
 $conn->close();
+
+// Redirect back to form
+header("Location: lostV3.html");
+exit();
 ?>

@@ -1,3 +1,21 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Your PHP processing code remains the same...
+if (isset($_POST['register'])) {
+    // ... your registration code ...
+    if ($stmt->execute()) {
+        file_put_contents('debug.log', "Registration successful for $email\n", FILE_APPEND);
+        $_SESSION['user_id'] = $conn->insert_id;
+        $_SESSION['user_name'] = $full_name;
+        header("Location: indexV3.php");  // Changed from indexV3.html to indexV3.php
+        exit();
+    }
+    // ... rest of your code ...
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
