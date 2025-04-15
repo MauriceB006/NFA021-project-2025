@@ -1,0 +1,39 @@
+Array
+(
+)
+Script started
+Array
+(
+    [full_name] => souheil Itanny
+    [email] => saidsndh@gmail.com
+    [phone] => 76345828
+    [password] => pubgnezlet
+    [confirm_password] => pubgnezlet
+    [register] => 
+)
+
+DB connected successfully
+Register form detected
+Processed form data:
+Name: souheil Itanny
+Email: saidsndh@gmail.com
+Phone: 76345828
+Registration successful for saidsndh@gmail.com
+Script started
+Array
+(
+    [full_name] => creator1
+    [email] => mauriceboustany72@gmail.com
+    [phone] => 76345828
+    [password] => 121212
+    [confirm_password] => 121212
+    [register] => 
+)
+
+DB connected successfully
+Register form detected
+Processed form data:
+Name: creator1
+Email: mauriceboustany72@gmail.com
+Phone: 76345828
+Registration successful for mauriceboustany72@gmail.com
