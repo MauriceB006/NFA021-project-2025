@@ -294,6 +294,15 @@ body {
   font-family: var(--ff-oswald);
   color: var(--white);
   font-size: 3rem;
+  width: 160px;
+  height: auto;
+  image-rendering: crisp-edges;
+}
+
+.logo img {
+  max-width: 50%; /* Won't exceed container width */
+  height: auto; /* Maintains aspect ratio */
+  width: 20px; /* Default size */
 }
 
 .nav-open-btn {
@@ -333,7 +342,7 @@ body {
 
 .navbar-top .logo {
   color: var(--onyx);
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 .nav-close-btn { font-size: 25px; }
@@ -1260,7 +1269,7 @@ select:hover {
 
   .header .container { max-width: unset; }
 
-  .header .logo { font-size: 3.5rem; }
+  .header .logo { font-size: 2rem; }
 
 
 
