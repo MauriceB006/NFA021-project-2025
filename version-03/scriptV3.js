@@ -25,7 +25,26 @@ for (let i = 0; i < navLinks.length; i++) {
   });
 }
 
+// 📊 Banner Promotion Tracking Script
+function viewPromotionEvent(element) {
+  event.preventDefault();
+  const promotionId = element.getAttribute('data-promotionid');
+  const index = element.getAttribute('data-index');
+  const url = element.getAttribute('href');
+  alert(`Tracking promotion click: ${promotionId}\nRedirecting to: ${url}`);
+}
 
+function trackPromotionView(promotionId) {
+  console.log(`Promotion viewed: ${promotionId}`);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const banners = document.querySelectorAll('.ADP-ad-link');
+  banners.forEach((banner) => {
+    const promotionId = banner.getAttribute('data-promotionid');
+    trackPromotionView(promotionId);
+  });
+});
 
 /**
  * header
