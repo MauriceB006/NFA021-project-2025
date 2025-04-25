@@ -141,6 +141,367 @@
 
 
 
+
+<!--  ADS BANNER -->
+
+
+<style>
+  :root {
+      --primary: #3d50dc;
+      --secondary: #1d2f42;
+      --light: #f2f2f2;
+      --text-muted: #7d879c;
+      --text-heading: #1d2f42;
+      --text-body: #1d2f42;
+      --border-color: #dfe0e4;
+      --border-radius: 5px;
+      --card-radius: 8px;
+      --card-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+      --card-shadow-hover: 0 0.3rem 1.525rem -0.375rem rgba(0,0,0,0.1);
+      --font-family: "Arial", sans-serif;
+      --font-base: 13px;
+      --font-lg: 17px;
+      --font-xl: 21px;
+      --font-xxl: 36px;
+      --semibold: 500;
+      --bold: bold;
+  }
+  
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-family);
+  }
+  
+  .banners-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+  }
+  
+  .promo-banner {
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: white;
+  }
+
+  .promo-banner deal-banner {
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: white;
+  }
+  
+  
+  .promo-banner:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+  }
+  
+  .banner-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+  }
+  
+  .banner-image {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+  
+  .banner-content {
+      padding: 15px;
+  }
+  
+  .banner-title {
+      font-size: var(--font-xl);
+      font-weight: var(--bold);
+      color: var(--text-heading);
+      margin-bottom: 8px;
+  }
+  
+  .banner-subtitle {
+      font-size: var(--font-lg);
+      color: var(--text-body);
+      margin-bottom: 12px;
+  }
+  
+  .banner-cta {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      border-radius: var(--border-radius);
+      font-weight: var(--semibold);
+      font-size: var(--font-lg);
+      margin-top: 10px;
+  }
+  
+  .banner-footer {
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+  }
+  
+  .deal-banner {
+      background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+      padding: 20px;
+      border-radius: var(--card-radius);
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .deal-highlight {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--primary);
+      color: white;
+      padding: 5px 15px;
+      font-weight: var(--bold);
+      border-bottom-left-radius: var(--border-radius);
+  }
+  
+  .deal-title {
+      font-size: var(--font-xl);
+      font-weight: var(--bold);
+      margin-bottom: 5px;
+  }
+  
+  .deal-value {
+      font-size: var(--font-xxl);
+      font-weight: var(--bold);
+      color: var(--primary);
+      line-height: 1;
+      margin: 10px 0;
+  }
+  
+  .deal-products {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+  }
+  
+  .deal-product {
+      flex: 1;
+      background-color: white;
+      padding: 10px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+  }
+  
+  .product-name {
+      font-weight: var(--bold);
+      margin-bottom: 5px;
+  }
+  
+  .product-price {
+      color: var(--primary);
+      font-weight: var(--bold);
+  }
+  
+  .product-discount {
+      color: var(--text-muted);
+      text-decoration: line-through;
+      font-size: var(--font-base);
+  }
+  
+  @media (max-width: 768px) {
+      .banners-container {
+          grid-template-columns: 1fr;
+      }
+      
+      .deal-products {
+          flex-direction: column;
+      }
+  }
+
+
+  .scroll-controls {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 20px 0;
+overflow: hidden;
+}
+
+.horizontal-scroll-wrapper {
+overflow-x: auto;
+scroll-behavior: smooth;
+width: 100%;
+}
+
+.banners-container {
+display: flex !important;
+flex-wrap: nowrap !important;
+gap: 20px;
+padding: 10px 0;
+min-width: max-content;
+}
+
+.promo-banner {
+flex: 0 0 auto;
+width: 300px;
+}
+
+.scroll-btn {
+background-color: var(--primary);
+color: white;
+border: none;
+padding: 12px;
+font-size: 24px;
+border-radius: 50%;
+cursor: pointer;
+z-index: 2;
+margin: 0 10px;
+transition: background-color 0.3s ease;
+}
+
+.scroll-btn:hover {
+background-color: #3a8f3a;
+}
+
+</style>
+</head>
+<body>
+
+<div class="scroll-controls">
+  <button class="scroll-btn left" onclick="scrollBanners(-1)">&#9664;</button>
+  
+  <div class="horizontal-scroll-wrapper">
+      <div class="banners-container">
+<div class="banners-container">
+  <!-- Discount Banner -->
+  <div class="promo-banner">
+      <a href="#" class="banner-link" data-promotionid="2853" data-index="1" onclick="viewPromotionEvent(this);">
+          <img src="../images/bus2.jpg" alt="15% OFF With Your Bank" class="banner-image">
+          <div class="banner-content">
+              <h3 class="banner-title">Gift Cards</h3>
+              <p class="banner-subtitle">The Secret Behind Big Smiles!</p>
+              <span class="banner-cta">CHECK ALL DISCOUNTS NOW</span>
+              <p class="banner-footer">For partnerships, reach out to us at partner@actc.com</p>
+          </div>
+      </a>
+  </div>
+  
+  <!-- Trade-in Banner -->
+  <div class="promo-banner deal-banner">
+      <div class="deal-highlight">HOT DEAL</div>
+      <a href="#" class="banner-link" data-promotionid="2854" data-index="2" onclick="viewPromotionEvent(this);">
+          <div class="banner-content">
+              <img src="../images/bus3.jpg" alt="15% OFF With Your Bank" class="banner-image">
+              <h3 class="deal-title">Get Up To</h3>
+              <div class="deal-value">85% Value</div>
+              <p class="banner-subtitle">For Your yearly rides</p>
+              
+              <div class="deal-products">
+                  <div class="deal-product">
+                      <div class="product-name">Hadath RD</div>
+                      <div>Student Discounts</div>
+                      <div>7+5'</div>
+                      <div class="product-price">XX LBP</div>
+                  </div>
+                  <div class="deal-product">
+                      <div class="product-name">BTS</div>
+                      <div>TTTTTTT</div>
+                      <div class="product-price">XX LBP</div>
+                      <div class="product-discount">XX LBP</div>
+                  </div>
+              </div>
+          </div>
+      </a>
+  </div>
+  
+  <!-- Product Banner (Image based) -->
+  <div class="promo-banner">
+      <a href="https://www.cartlow.com/uae/en/home/iphones-page" class="banner-link" data-promotionid="2855" data-index="3" onclick="viewPromotionEvent(this);">
+          <img src="../images/bus.jpg" alt="Premium Deals" class="banner-image">
+          <div class="banner-content">
+              <h3 class="banner-title">XXXX YYYYY</h3>
+              <p class="banner-subtitle"> XXX YYY ZZZ OOO</p>
+              <span class="banner-cta">VIEW DEALS</span>
+          </div>
+      </a>
+  </div>
+
+  <div class="promo-banner">
+    <a href="https://www.cartlow.com/uae/en/home/iphones-page" class="banner-link" data-promotionid="2855" data-index="3" onclick="viewPromotionEvent(this);">
+        <img src="../images/bus.jpg" alt="Premium Deals" class="banner-image">
+        <div class="banner-content">
+            <h3 class="banner-title">XXXX YYYYY</h3>
+            <p class="banner-subtitle"> XXX YYY ZZZ OOO</p>
+            <span class="banner-cta">VIEW DEALS</span>
+        </div>
+    </a>
+</div>
+
+<div class="promo-banner">
+  <a href="https://www.cartlow.com/uae/en/home/iphones-page" class="banner-link" data-promotionid="2855" data-index="3" onclick="viewPromotionEvent(this);">
+      <img src="../images/bus.jpg" alt="Premium Deals" class="banner-image">
+      <div class="banner-content">
+          <h3 class="banner-title">XXXX YYYYY</h3>
+          <p class="banner-subtitle"> XXX YYY ZZZ OOO</p>
+          <span class="banner-cta">VIEW DEALS</span>
+      </div>
+  </a>
+</div>
+
+<div class="promo-banner">
+  <a href="https://www.cartlow.com/uae/en/home/iphones-page" class="banner-link" data-promotionid="2855" data-index="3" onclick="viewPromotionEvent(this);">
+      <img src="../images/bus.jpg" alt="Premium Deals" class="banner-image">
+      <div class="banner-content">
+          <h3 class="banner-title">XXXX YYYYY</h3>
+          <p class="banner-subtitle"> XXX YYY ZZZ OOO</p>
+          <span class="banner-cta">VIEW DEALS</span>
+      </div>
+  </a>
+</div>
+
+<div class="promo-banner">
+  <a href="https://www.cartlow.com/uae/en/home/iphones-page" class="banner-link" data-promotionid="2855" data-index="3" onclick="viewPromotionEvent(this);">
+      <img src="../images/bus.jpg" alt="Premium Deals" class="banner-image">
+      <div class="banner-content">
+          <h3 class="banner-title">XXXX YYYYY</h3>
+          <p class="banner-subtitle"> XXX YYY ZZZ OOO</p>
+          <span class="banner-cta">VIEW DEALS</span>
+      </div>
+  </a>
+</div>
+
+<div class="promo-banner">
+  <a href="https://www.cartlow.com/uae/en/home/iphones-page" class="banner-link" data-promotionid="2855" data-index="3" onclick="viewPromotionEvent(this);">
+      <img src="../images/bus.jpg" alt="Premium Deals" class="banner-image">
+      <div class="banner-content">
+          <h3 class="banner-title">XXXX YYYYY</h3>
+          <p class="banner-subtitle"> XXX YYY ZZZ OOO</p>
+          <span class="banner-cta">VIEW DEALS</span>
+      </div>
+  </a>
+</div>
+</div>
+
+</div>
+</div>
+
+<button class="scroll-btn right" onclick="scrollBanners(1)">&#9654;</button>
+</div>
+
+
+
+
+
+
       <!-- 
         - #ABOUT
       -->

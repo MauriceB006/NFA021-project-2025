@@ -261,3 +261,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 });
+        function viewPromotionEvent(element) {
+            // Prevent default link behavior for demo
+            event.preventDefault();
+            
+            // Get promotion data from attributes
+            const promotionId = element.getAttribute('data-promotionid');
+            const index = element.getAttribute('data-index');
+            const url = element.getAttribute('href');
+            
+            // In a real implementation, you would track this event
+            console.log(`Promotion clicked: ID ${promotionId}, Index ${index}, URL ${url}`);
+            
+            // Here you would typically:
+            // 1. Send analytics data
+            // 2. Redirect to the target URL
+            // window.location.href = url;
+            
+            // For demo, just show an alert
+            alert(`Tracking promotion click: ${promotionId}\nRedirecting to: ${url}`);
+        }
+        
+        // This would be part of your analytics tracking
+        function trackPromotionView(promotionId) {
+            console.log(`Promotion viewed: ${promotionId}`);
+            // Implement your actual tracking logic here
+        }
+        
+        // Track initial banner views
+        document.addEventListener('DOMContentLoaded', function() {
+            const banners = document.querySelectorAll('.promo-banner');
+            banners.forEach((banner, index) => {
+                const promotionId = banner.querySelector('.banner-link').getAttribute('data-promotionid');
+                trackPromotionView(promotionId);
+            });
+        });
+        
+        function scrollBanners(direction) {
+    const container = document.querySelector('.horizontal-scroll-wrapper');
+    const scrollAmount = 320; // scroll one card width (plus gap)
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+
+
+  }
