@@ -5,10 +5,10 @@
    * colors
    */
 /* Primary Colors */
---green-blue-crayola: hsl(244, 59%, 30%);
---prussian-blue: hsl(202, 72%, 15%);
---indigo-dye: hsl(202, 64%, 26%);
---dark-orange: hsl(244, 89%, 17%);
+#10069F: hsl(244, 59%, 30%);
+#10069F: hsl(202, 72%, 15%);
+#10069F: hsl(202, 64%, 26%);
+--dark-orange: #10069F;
 
 /* Neutral Colors */
 --eerie-black: hsl(210, 11%, 15%);
@@ -27,8 +27,8 @@
    * typography
    */
 
-  --ff-oswald: 'Oswald', sans-serif;
-  --ff-rubik: 'Rubik', sans-serif;
+  --ff-montserrat: 'Montserrat', sans-serif;
+  --ff-myriad: 'Myriad Pro', sans-serif;
 
   --fs-1: 6rem;
   --fs-2: 5rem;
@@ -123,7 +123,7 @@ button { cursor: pointer; }
 ion-icon { pointer-events: none; }
 
 html {
-  font-family: var(--ff-rubik);
+  font-family: var(--ff-myriad);
   font-size: 10px;
   scroll-behavior: smooth;
 }
@@ -163,7 +163,7 @@ body {
 .h1,
 .h2,
 .h3 {
-  font-family: var(--ff-oswald);
+  font-family: var(--ff-montserrat);
   line-height: 1.2;
   font-weight: var(--fw-600);
 }
@@ -174,7 +174,7 @@ body {
 }
 
 .h2,
-.h3 { color: hsl(244, 89%, 17%);
+.h3 { color: #10069F;
 }
 
 .h2 { font-size: var(--fs-4); }
@@ -186,17 +186,25 @@ body {
   aspect-ratio: var(--width) / var(--height);
 }
 
+.img-cover-1 {
+  width: 500px;      /* or any width you want */
+  height: 500px;     /* same height as width to make it perfectly round */
+  object-fit: cover; /* makes sure the image covers the circle without squishing */
+  border-radius: 50%; /* magic! turns square into a circle */
+  overflow: hidden;   /* make sure nothing spills outside */
+} 
+
+
 .img-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .section-subtitle {
   color: black;
   text-transform: uppercase;
   font-size: var(--fs-6);
-  font-family: var(--ff-oswald);
+  font-family: var(--ff-montserrat);
   font-weight: var(--fw-600);
   letter-spacing: 3px;
   margin-block-end: 10px;
@@ -298,7 +306,7 @@ body {
   transition: var(--transition);
 }
 
-.header.active { background-color: var(--green-blue-crayola); }
+.header.active { background-color:#10069F; }
 
 .header .container {
   display: flex;
@@ -308,7 +316,7 @@ body {
 }
 
 .logo {
-  font-family: var(--ff-oswald);
+  font-family: var(--ff-montserrat);
   color: var(--white);
   font-size: 3rem;
   width: 160px;
@@ -485,7 +493,8 @@ body {
   font-weight: var(--fw-700);
 }
 
-.hero-text { margin-block: 20px 15px; }
+.hero-text { 
+  margin-block: 20px 15px; }
 
 .btn-outline {
   max-width: max-content;
@@ -658,7 +667,7 @@ select:hover {
 
 .fares-item {
   background-color: var(--white);
-  border: 1px solid hsl(244, 89%, 17%);
+  border: 1px solid #10069F;
   padding: 15px 20px;
   border-radius: 5px;
   display: flex;
@@ -688,7 +697,7 @@ select:hover {
 }
 
 .fares-item .btn:hover {
-  background-color: var(--prussian-blue);
+  background-color: #10069F;
   color: var(--white);
 }
 /* Button Styling */
@@ -812,7 +821,7 @@ select:hover {
 
 .update-item {
   background-color: var(--white);
-  color: var(--prussian-blue); /* Text color for updates */
+  color: #10069F; /* Text color for updates */
   border: 1px solid var(--light-gray);
   padding: 15px 20px;
   margin-bottom: 10px;
@@ -855,7 +864,7 @@ select:hover {
 }
 
 .map-buttons .btn:hover {
-  background-color: var(--prussian-blue);
+  background-color: #10069F;
 }
 
 /*section*/
@@ -903,7 +912,7 @@ select:hover {
 .feature-card::before {
   content: var(--card-number);
   color: var(--cultured-1);
-  font-family: var(--ff-oswald);
+  font-family: var(--ff-montserrat);
   font-size: var(--fs-1);
   font-weight: var(--fw-700);
   line-height: 1;
@@ -930,9 +939,9 @@ select:hover {
 }
 
 .feature-card .card-btn {
-  color: var(--prussian-blue);
+  color: #10069F;
   font-size: 24px;
-  border: 2px solid var(--prussian-blue);
+  border: 2px solid #10069F;
   max-width: max-content;
   margin-inline: auto;
   padding: 10px 18px;
@@ -985,7 +994,7 @@ select:hover {
 .project-card :is(.card-title, .card-link):is(:hover, :focus) { color: var(--dark-orange); }
 
 .project-card .card-link {
-  color: var(--prussian-blue);
+  color: #10069F;
   font-size: var(--fs-10);
   font-weight: var(--fw-600);
   text-transform: uppercase;
@@ -1008,11 +1017,11 @@ select:hover {
 
 .project-list::-webkit-scrollbar { height: 15px; }
 
-.project-list::-webkit-scrollbar-track { outline: 2px solid var(--prussian-blue); }
+.project-list::-webkit-scrollbar-track { outline: 2px solid #10069F; }
 
 .project-list::-webkit-scrollbar-thumb {
   border: 3px solid var(--cultured-1);
-  background-color: var(--prussian-blue);
+  background-color: #10069F;
 }
 
 .project-list::-webkit-scrollbar-button { width: calc(25% - 40px); }
@@ -1032,11 +1041,11 @@ select:hover {
 .blog-card .card-content { position: relative; }
 
 .blog-card .card-meta {
-  background-color: var(--prussian-blue);
+  background-color: #10069F;
   color: var(--white);
   text-align: center;
   font-size: var(--fs-5);
-  font-family: var(--ff-oswald);
+  font-family: var(--ff-montserrat);
   font-weight: var(--fw-600);
   line-height: 1.5;
   max-width: max-content;
@@ -1087,9 +1096,9 @@ select:hover {
 .email-field:focus { box-shadow: 0 2px 2px hsla(0, 0%, 0%, 0.4); }
 
 .newsletter-btn {
-  background-color: var(--prussian-blue);
+  background-color: #10069F;
   color: var(--white);
-  font-family: var(--ff-oswald);
+  font-family: var(--ff-montserrat);
   font-weight: var(--fw-700);
   padding: 8px 20px;
 }
@@ -1104,7 +1113,7 @@ select:hover {
 
 .footer {
   background-color: var(--plutinum);
-  color: var(--prussian-blue);
+  color: #10069F;
 }
 
 .footer-top {
@@ -1113,7 +1122,7 @@ select:hover {
 }
 
 .footer .logo {
-  color: var(--prussian-blue);
+  color: #10069F;
   font-weight: var(--fw-800);
   font-size: 3.2rem;
 }
@@ -1126,14 +1135,14 @@ select:hover {
 }
 
 .social-link {
-  background-color: var(--indigo-dye);
+  background-color: #10069F;
   color: var(--white);
   font-size: 20px;
   padding: 12px;
   transition: var(--transition);
 }
 
-.social-link:is(:hover, :focus) { background-color: var(--prussian-blue); }
+.social-link:is(:hover, :focus) { background-color: #10069F; }
 
 .footer-list-title {
   font-size: var(--fs-6);
@@ -1147,9 +1156,9 @@ select:hover {
 
 .footer-bottom {
   padding-block: 40px;
-  border-block-start: 1px solid var(--prussian-blue);
+  border-block-start: 1px solid #10069F;
   font-size: var(--fs-9);
-  color: var(--indigo-dye);
+  color: #10069F;
 }
 
 .copyright-link { display: inline-block; }

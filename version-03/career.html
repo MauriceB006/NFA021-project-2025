@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Our Team | Career Opportunities</title>
     <style>
+
+:root {
+            --primary-color: #10069F;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-gray: #ecf0f1;
+            --dark-gray: #7f8c8d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: #333;
             max-width: 1200px;
@@ -17,7 +33,8 @@
         h1 {
             color: #2c3e50;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
         }
         
         .job-container {
@@ -28,7 +45,7 @@
         }
         
         .job-title {
-            background-color: #3498db;
+            background-color: #10069F;
             color: white;
             padding: 15px 20px;
             cursor: pointer;
@@ -97,7 +114,7 @@
         }
         
         .submit-btn {
-            background-color: #2ecc71;
+            background-color: #10069F;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -114,9 +131,60 @@
         .required {
             color: #e74c3c;
         }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .back-button {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="indexV3.html" class="back-button">
+                <i class="fas fa-chevron-left"></i> Back
+            </a>
+            <h1>
+                <img src="../images/ACTC LOGO -02 SMALL.png" class="logo" alt="ACTC Public Transport" style="height: 50px;">
+            </h1>
+            <div style="width: 80px;"></div> <!-- Spacer for balance -->
+        </div>
+    </header>
+
+
     <h1>Join Our Team</h1>
     
     <div class="job-container">
